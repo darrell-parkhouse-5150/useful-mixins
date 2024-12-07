@@ -1,0 +1,31 @@
+@mixin reespond-to($bp) {
+    @if $bp == 'small' {
+        @media (max-width: 600px) { @content; }
+    } @else if $bp == 'medium' {
+        @media (max-width: 900px) { @content; }
+    } @else if  $bp == 'large' {
+        @media (max-width: 1200px) { @content; }
+    
+    }
+}
+    
+@function px-to-rem($px) {
+    $result: calc($px / 16) * 1rem;
+    @return $result;
+
+}
+
+@mixin flex-center() {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+    
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
