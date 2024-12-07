@@ -1,4 +1,4 @@
-@mixin reespond-to($bp) {
+@mixin respond-to($bp) {
     @if $bp == 'small' {
         @media (max-width: 600px) { @content; }
     } @else if $bp == 'medium' {
@@ -28,4 +28,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@mixin responsive-font($min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+    font-size: calc(#{$min-size}px + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}px) / (#{$max-width} - #{$min-width})));
+
+    @media (max-width: #{$min-width}) {
+        font-size: #{min-size}px;
+    }
+
+    @media (min-width: #{$max-width}) {
+        font-size: #{$max-size}px
+    }
 }
