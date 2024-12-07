@@ -190,3 +190,29 @@
 @mixin linear-gradient($direction, $start, $end) {
     background: linear-gradient($direction, $start, $end);
 }
+
+/***** expert mixins ******/
+@mixin responsive-type-scale (
+    $min-width: 320px,
+    $max-width: 1440px,
+    $min-size: 16px,
+    $max-size: 24px,
+    $scale-factor: 1.2
+) {
+    $type-scales: (
+        small: $min-size,
+        medium: $min-size * $scale-factor,
+        large: $min-size * pow($scale-factor, 2),
+        xlarge: $min-size * pow($scale-factor, 3)
+    );
+
+    @each $breakpoint, $size in $type-scales {
+        .type-#{$breakpoint} {
+            font-size: calc(
+                #{$size} + 
+                (#{$max-size} - #{size}) *
+                max(0, min(1, (100vw - #{$min-width}) / (#{$max-width} - #{$min-width})))
+            );
+        }
+    }
+}
