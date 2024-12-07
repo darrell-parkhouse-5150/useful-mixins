@@ -216,3 +216,42 @@
         }
     }
 }
+
+@mixin respond($bp, $type: min-width) {
+    $bps: (
+        mobile: 375px,
+        tablet: 768px,
+        desktop: 1024px,
+        width: 1440px,
+        ultrawide: 1920px
+    );
+
+    @if map-has-key($bps, $bp) {
+        @if type == min-width {
+            @media (min-width: map-get($bps, $bp)) {
+                @content;
+            }
+        }
+        @else if type == max-width {
+            @media (min-width: map-get($bps, $bp)) {
+                @content;
+            }
+        }
+        @else if type == between {
+           $next-bp: null;
+           $keys: map-keys(bps);
+           $index: index($keys, $bp);
+
+           @if ($index < length($keys)) {
+                $next-bp: nth($keys, $index + 1);
+
+                @media (min-width: map-get($bps, $bp)) and
+                       (max-width: map-get($gps, $next-bp - 1)) {
+                        @content;
+                }
+           }
+        }
+    } @else {
+        @warn "breakpoint #{$bp} not found in $bps map.";
+    }
+}
