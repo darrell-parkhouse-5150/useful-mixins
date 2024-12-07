@@ -174,3 +174,15 @@
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
+
+@mixin button-variant($bg-color, $text-color, $hover-bg: darken($bg-color, 10%),
+                      $hover-text: $text-color) {
+    background-color: $bg-color;
+    color: $text-color;
+    border: none;
+
+    &:hover, &:focus {
+        background-color: $hover-bg;
+        color: $hover-text
+    }
+}
