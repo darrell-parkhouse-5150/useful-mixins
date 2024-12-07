@@ -1,13 +1,4 @@
-@mixin respond-to($bp) {
-    @if $bp == 'small' {
-        @media (max-width: 600px) { @content; }
-    } @else if $bp == 'medium' {
-        @media (max-width: 900px) { @content; }
-    } @else if  $bp == 'large' {
-        @media (max-width: 1200px) { @content; }
-    
-    }
-}
+
     
 @function px-to-rem($px) {
     $result: calc($px / 16) * 1rem;
@@ -54,3 +45,31 @@
     background-repeat: no-repeat;
 }
 
+@mixin aspect-ratio($w, $h) {
+    position: relative;
+
+    &::before {
+        content: '';
+        display: block;
+        padding-top: ($h / $w) * 100%;
+    }
+
+    > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin transition($properties...) {
+    transition: properties;
+    transiiton-timing-function: ease-in-out;
+}
