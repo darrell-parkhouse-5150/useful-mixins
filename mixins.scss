@@ -73,3 +73,24 @@
     transition: properties;
     transiiton-timing-function: ease-in-out;
 }
+
+@mixin respond-to($bp) {
+    @if $bp == small {
+        @media(max-width: 600px) {
+            @content;
+        }
+    }
+
+    @else if $bp == medium {
+        @media (max-width: 1024px) {
+            @content;
+        }
+    }
+    
+    @else if $bp == large {
+        @media (max-width: 1440px) {
+            @content;
+        }
+    }
+
+}
