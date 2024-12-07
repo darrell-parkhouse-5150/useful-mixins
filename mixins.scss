@@ -158,3 +158,12 @@
         border-color: transparent transparent transparent $color;
     }
 }
+
+@mixin hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
