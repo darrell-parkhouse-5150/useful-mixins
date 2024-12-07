@@ -92,5 +92,14 @@
             @content;
         }
     }
+}
 
+@mixin box-shadow($h, $v, $b, $s, $color: rgba(0, 0, 0, 0.15)) {
+    box-shadow: $h $v $b $s $c;
+}
+
+@mixin grid-auto-fit($min-width, $gap: 1rem) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+    gap: $gap;
 }
