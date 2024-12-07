@@ -41,3 +41,16 @@
         font-size: #{$max-size}px
     }
 }
+
+@mixin hover {
+    &:hover, &:focus {
+        @content;
+    }
+}
+
+@mixin bg-cover {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
