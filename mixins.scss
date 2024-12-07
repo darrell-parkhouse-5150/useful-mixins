@@ -106,6 +106,15 @@
 
 @mixin define-custom-props($props...) {
     @each $prop in $props {
-        --#{$props}: #{$prop}
+        --#{$props}: #{$prop};
     }
 }
+
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
