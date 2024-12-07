@@ -186,3 +186,7 @@
         color: $hover-text
     }
 }
+
+@mixin linear-gradient($direction, $start, $end) {
+    background: linear-gradient($direction, $start, $end);
+}
