@@ -103,3 +103,9 @@
     grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
     gap: $gap;
 }
+
+@mixin define-custom-props($props...) {
+    @each $prop in $props {
+        --#{$props}: #{$prop}
+    }
+}
