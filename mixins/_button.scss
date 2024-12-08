@@ -1,0 +1,94 @@
+$button-sizes: (
+  small: (
+    padding: 8px 12px,
+    font-size: 12px,
+  ),
+  medium: (
+    padding: 10px 16px,
+    font-size: 14px,
+  ),
+  large: (
+    padding: 12px 20px,
+    font-size: 16px,
+  ),
+);
+
+$button-types: (
+  primary: (
+    background-color: #007bff,
+    color: #fff,
+    border-color: #007bff,
+  ),
+  secondary: (
+    background-color: #6c757d,
+    color: #fff,
+    border-color: #6c757d,
+  ),
+  success: (
+    background-color: #28a745,
+    color: #fff,
+    border-color: #28a745,
+  ),
+  error: (
+    background-color: #dc3545,
+    color: #fff,
+    border-color: #dc3545,
+  ),
+  warning: (
+    background-color: #ffc107,
+    color: #000,
+    border-color: #ffc107,
+  ),
+);
+
+$button-styles: (
+  solid: (
+    border-style: solid,
+  ),
+  outlined: (
+    border-style: solid,
+    background-color: transparent,
+  ),
+  rounded: (
+    border-radius: 5px,
+  ),
+);
+
+@mixin button($size, $type, $style) {
+  @each $key, $value in $button-sizes {
+    @if $key == $size {
+      @each $key, $value in $value {
+        #{$key}: $value;
+      }
+    }
+  }
+
+  @each $key, $value in $button-types {
+    @if $key == $type {
+      @each $key, $value in $value {
+        #{$key}: $value;
+      }
+    }
+  }
+
+  @each $key, $value in $button-styles {
+    @if $key == $style {
+      @each $key, $value in $value {
+        #{$key}: $value;
+      }
+    }
+  }
+}
+
+button {
+    @include button(small, primary, solid);
+}
+
+.lg-primary-btn {
+    @include button(large, primary, rounded);
+    display: inline-block;
+
+    &:hover {
+        cursor: pointer;cd 
+    }
+}
